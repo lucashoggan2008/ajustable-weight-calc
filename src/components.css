@@ -1,1 +1,0 @@
-.checkbox{display:flex;flex-direction:row;justify-content:space-between;align-items:center;min-width:10rem}.checkbox div{height:3rem;aspect-ratio:1;border:2px solid #000;border-radius:3px}.checkbox div.active{background-color:green}.checkbox div.unactive{background-color:rgba(0,0,0,0)}

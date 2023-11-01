@@ -14,8 +14,7 @@ p, h1, h2, h3, input {
 }
 
 main {
-    width: 100vw;
-    height: 100vh;
+    max-width: 100vw;
     background-color: $walnut-brown;
     display: flex;
     flex-direction: column;
@@ -60,10 +59,58 @@ main {
         }
     }
 
-    select {
+
+    h2 {
         width: 80vw;
+        background-color: black;
+        border-radius: 3px; 
         text-align: center;
-        font-size: 5rem;
+        padding: 0.25rem;
+        color: $light-blue;
     }
 
+    
+
+
+
+}
+
+.plate-arangment {
+    background-color: white;
+    border-radius: 3px;
+    height: 20vh;
+    width: 80vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    .plate {
+        height: 100%;
+        background-color: darkgrey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+    }
+
+    .plate.small-plate {
+        aspect-ratio: 1/5;
+    }
+
+    .plate.medium-plate {
+        aspect-ratio: 1/3;
+    }
+
+    .plate.large-plate {
+        aspect-ratio: 1/2;
+    }
+
+    .vertical-seperator {
+        height: 100%;
+        width: 3px;
+        background-color: black;
+    }
 }

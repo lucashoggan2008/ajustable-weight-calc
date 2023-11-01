@@ -1,211 +1,146 @@
 import React from 'react'
 
-const weights = {'6':[0, 0, 0], 
-'7.1':[1, 0, 0], 
-'8.2':[2, 0, 0], 
-'9.3':[1, 1, 0], 
-'10.4':[2, 1, 0], 
-'11.5':[1, 2, 0], 
-'12.6':[2, 2, 0], 
-'13.7':[1, 3, 0], 
-'14.8':[2, 3, 0], 
-'15.9':[1, 4, 0], 
-'17.0':[2, 4, 0], 
-'18.1':[1, 5, 0], 
-'19.2':[2, 5, 0], 
-'19.5':[1, 1, 1], 
-'20.6':[2, 1, 1], 
-'21.7':[1, 2, 1], 
-'22.8':[2, 2, 1], 
-'23.9':[1, 3, 1], 
-'25.0':[2, 3, 1], 
-'26.1':[1, 4, 1], 
-'27.2':[2, 4, 1], 
-'28.3':[1, 5, 1], 
-'29.4':[2, 5, 1], 
-'29.7':[1, 1, 2], 
-'30.8':[2, 1, 2], 
-'31.9':[1, 2, 2], 
-'33.0':[2, 2, 2], 
-'34.1':[1, 3, 2], 
-'35.2':[2, 3, 2], 
-'36.3':[1, 4, 2], 
-'37.4':[2, 4, 2], 
-'38.5':[1, 5, 2], 
-'39.6':[2, 5, 2], 
-'39.9':[1, 1, 3], 
-'41.0':[2, 1, 3], 
-'42.1':[1, 2, 3], 
-'43.2':[2, 2, 3], 
-'44.3':[1, 3, 3], 
-'45.4':[2, 3, 3], 
-'46.5':[1, 4, 3], 
-'47.6':[2, 4, 3], 
-'48.7':[1, 5, 3], 
-'49.8':[2, 5, 3], 
-'50.1':[1, 1, 4], 
-'51.2':[2, 1, 4], 
-'52.3':[1, 2, 4], 
-'53.4':[2, 2, 4], 
-'54.5':[1, 3, 4], 
-'55.6':[2, 3, 4], 
-'56.7':[1, 4, 4], 
-'57.8':[2, 4, 4], 
-'58.9':[1, 5, 4], 
-'60.0':[2, 5, 4], 
-'60.3':[1, 1, 5], 
-'61.4':[2, 1, 5], 
-'62.5':[1, 2, 5], 
-'63.6':[2, 2, 5], 
-'64.7':[1, 3, 5], 
-'65.8':[2, 3, 5], 
-'66.9':[1, 4, 5], 
-'68.0':[2, 4, 5], 
-'69.1':[1, 5, 5], 
-'70.2':[2, 5, 5], 
-'70.5':[1, 1, 6], 
-'71.6':[2, 1, 6], 
-'72.7':[1, 2, 6], 
-'73.8':[2, 2, 6], 
-'74.9':[1, 3, 6], 
-'76.0':[2, 3, 6], 
-'77.1':[1, 4, 6], 
-'78.2':[2, 4, 6], 
-'79.3':[1, 5, 6], 
-'80.4':[2, 5, 6], 
-'80.7':[1, 1, 7], 
-'81.8':[2, 1, 7], 
-'82.9':[1, 2, 7], 
-'84.0':[2, 2, 7], 
-'85.1':[1, 3, 7], 
-'86.2':[2, 3, 7], 
-'87.3':[1, 4, 7], 
-'88.4':[2, 4, 7], 
-'89.5':[1, 5, 7], 
-'90.6':[2, 5, 7], 
-'90.9':[1, 1, 8], 
-'92.0':[2, 1, 8], 
-'93.1':[1, 2, 8], 
-'94.2':[2, 2, 8], 
-'95.3':[1, 3, 8], 
-'96.4':[2, 3, 8], 
-'97.5':[1, 4, 8], 
-'98.6':[2, 4, 8], 
-'99.7':[1, 5, 8], 
-'100.8':[2, 5, 8], 
-'101.1':[1, 1, 9], 
-'102.2':[2, 1, 9], 
-'103.3':[1, 2, 9], 
-'104.4':[2, 2, 9], 
-'105.5':[1, 3, 9], 
-'106.6':[2, 3, 9], 
-'107.7':[1, 4, 9], 
-'108.8':[2, 4, 9], 
-'109.9':[1, 5, 9], 
-'111.0':[2, 5, 9], 
-'111.3':[1, 1, 10], 
-'112.4':[2, 1, 10], 
-'113.5':[1, 2, 10], 
-'114.6':[2, 2, 10], 
-'115.7':[1, 3, 10], 
-'116.8':[2, 3, 10], 
-'117.9':[1, 4, 10], 
-'119.0':[2, 4, 10], 
-'120.1':[1, 5, 10], 
-'121.2':[2, 5, 10], 
-'121.5':[1, 1, 11], 
-'122.6':[2, 1, 11], 
-'123.7':[1, 2, 11], 
-'124.8':[2, 2, 11], 
-'125.9':[1, 3, 11], 
-'127.0':[2, 3, 11], 
-'128.1':[1, 4, 11], 
-'129.2':[2, 4, 11], 
-'130.3':[1, 5, 11], 
-'131.4':[2, 5, 11], 
-'131.7':[1, 1, 12], 
-'132.8':[2, 1, 12], 
-'133.9':[1, 2, 12], 
-'135.0':[2, 2, 12], 
-'136.1':[1, 3, 12], 
-'137.2':[2, 3, 12], 
-'138.3':[1, 4, 12], 
-'139.4':[2, 4, 12], 
-'140.5':[1, 5, 12], 
-'141.6':[2, 5, 12], 
-'141.9':[1, 1, 13], 
-'143.0':[2, 1, 13], 
-'144.1':[1, 2, 13], 
-'145.2':[2, 2, 13], 
-'146.3':[1, 3, 13], 
-'147.4':[2, 3, 13], 
-'148.5':[1, 4, 13], 
-'149.6':[2, 4, 13], 
-'150.7':[1, 5, 13], 
-'151.8':[2, 5, 13], 
-'152.1':[1, 1, 14], 
-'153.2':[2, 1, 14], 
-'154.3':[1, 2, 14], 
-'155.4':[2, 2, 14], 
-'156.5':[1, 3, 14], 
-'157.6':[2, 3, 14], 
-'158.7':[1, 4, 14], 
-'159.8':[2, 4, 14], 
-'160.9':[1, 5, 14], 
-'162.0':[2, 5, 14], 
-'162.3':[1, 1, 15], 
-'163.4':[2, 1, 15], 
-'164.5':[1, 2, 15], 
-'165.6':[2, 2, 15], 
-'166.7':[1, 3, 15], 
-'167.8':[2, 3, 15], 
-'168.9':[1, 4, 15], 
-'170.0':[2, 4, 15], 
-'171.1':[1, 5, 15], 
-'172.2':[2, 5, 15], 
-'172.5':[1, 1, 16], 
-'173.6':[2, 1, 16], 
-'174.7':[1, 2, 16], 
-'175.8':[2, 2, 16], 
-'176.9':[1, 3, 16], 
-'178.0':[2, 3, 16], 
-'179.1':[1, 4, 16], 
-'180.2':[2, 4, 16], 
-'181.3':[1, 5, 16], 
-'182.4':[2, 5, 16], 
-'182.7':[1, 1, 17], 
-'183.8':[2, 1, 17], 
-'184.9':[1, 2, 17], 
-'186.0':[2, 2, 17], 
-'187.1':[1, 3, 17], 
-'188.2':[2, 3, 17], 
-'189.3':[1, 4, 17], 
-'190.4':[2, 4, 17], 
-'191.5':[1, 5, 17], 
-'192.6':[2, 5, 17], 
-'192.9':[1, 1, 18], 
-'194.0':[2, 1, 18], 
-'195.1':[1, 2, 18], 
-'196.2':[2, 2, 18], 
-'197.3':[1, 3, 18], 
-'198.4':[2, 3, 18], 
-'199.5':[1, 4, 18], 
-'200.6':[2, 4, 18], 
-'201.7':[1, 5, 18], 
-'202.8':[2, 5, 18], 
-'203.1':[1, 1, 19], 
-'204.2':[2, 1, 19], 
-'205.3':[1, 2, 19], }
+const PlateArangement = ({plates}) => {
+  
+  const smallPlate = (
+    <div class="plate small-plate">
+      <h1>S</h1>
+    </div>
+  )
+  const mediumPlate = (
+    <div className="plate medium-plate">
+      <h1>M</h1>
+    </div>
+  )
+
+  const largePlate = (
+    <div className="plate large-plate">
+      <h1>L</h1>
+    </div>
+  )
+
+  const determineSides = (plates) => {
+    var side1 = []
+    var side2 = []
+    var nextSide = 1;
+    var tempPlates = {
+      small:plates.small,
+      medium:plates.medium,
+      large:plates.large
+    }
+
+    const addToSides = (val) => {
+      if (nextSide === 1) {
+        side1.push(val)
+        nextSide = 2
+      } else {
+        side2.push(val)
+        nextSide = 1
+      }
+    }
+
+    const repeate = (val, n) => {
+      var a = []
+
+      for (var i=1;i<=n;i++) {
+        a.push([val])
+      }
+
+      return a
+    }
+
+    if (plates.small % 2 === 0 && plates.small !== 0) {
+      side1.push(repeate(smallPlate, plates.small/2))
+      side2.push(repeate(smallPlate, plates.small/2))
+      tempPlates.small = 0
+    } else if (plates.small > 2) {
+      side1.push(repeate(smallPlate, Math.floor(plates.small/2)))
+      side2.push(repeate(smallPlate, Math.floor(plates.small/2)))
+      tempPlates.small -= Math.floor(plates.small/2) * 2
+    }
+    while(tempPlates.small > 0) {
+      addToSides(smallPlate)
+      tempPlates.small -= 1
+    }
+    if (plates.medium % 2 === 0 && plates.medium !== 0) {
+      side1.push(repeate(mediumPlate, plates.medium/2))
+      side2.push(repeate(mediumPlate, plates.medium/2))
+      tempPlates.medium = 0
+
+    } else if (plates.medium > 2) {
+      side1.push(repeate(mediumPlate, Math.floor(plates.medium/2)))
+      side2.push(repeate(mediumPlate, Math.floor(plates.medium/2)))
+    }
+    while(tempPlates.medium > 0) {
+      addToSides(mediumPlate)
+      tempPlates.medium -= 1
+    }
+    if (plates.large % 2 === 0 && plates.large !== 0) {
+      side1.push(repeate(largePlate, plates.large/2))
+      side2.push(repeate(largePlate, plates.large/2))
+      tempPlates.large = 0
+    } else if (plates.large > 2) {
+      side1.push(repeate(largePlate, Math.floor(plates.large/2)))
+      side2.push(repeate(largePlate, Math.floor(plates.large/2)))
+      tempPlates.large -= Math.floor(plates.large/2) * 2
+    }
+    while(tempPlates.large > 0) {
+      addToSides(largePlate)
+      tempPlates.large -= 1
+    }
+
+    return [side1, side2.reverse()]
+    }
+    var sides = determineSides(plates)
+    return (
+      <div className="plate-arangment">{sides[0]}<div className="vertical-seperator"></div>{sides[1]}</div>
+    )
+  
+  }  
+  
+  
 
 const App = () => {
+  const [inputText, setInputText] = React.useState("")
   const [plates, setPlates] = React.useState({large:0, medium:0, small:0})
-  const [dropdownVal, setDropdownVal] = React.useState("6")
+  const getPlateNumber = (num) => {
+    num -= 6
+    var large = 0
+    var medium = 0
+    var small = 0
+    
+    if (num >= 20) {
+      large = Math.floor(num/10)
+      num -= large * 10
+    }
+    while (num > 2) {
+      medium += 1
+      num -= 2
+    }
+    small = num
+    return {
+      large, medium, small
+    }
+  }
 
   
 
-  const handleDrowdownChange = (e) => {
-    setDropdownVal(e.target.value)
-    setPlates({small:weights[e.target.value][0], medium:weights[e.target.value][1], large:weights[e.target.value][2]})
+
+  const whenTextFieldUpdate = (e) => {
+    var text = e.target.value
+    if (text === "") {
+      setInputText(text)
+    } else {  
+      var num = Number(text)
+      if (isNaN(num) || num < 6) {
+        setPlates({large:0, medium:0, small:0})
+      }
+      else {
+        var plates = getPlateNumber(num)
+        setPlates(plates)
+      }
+      
+      setInputText(text)}
   }
 
   return (
@@ -215,19 +150,17 @@ const App = () => {
           Weight Calculator
         </p>
       </div>
-      <select value={dropdownVal} onChange={handleDrowdownChange}>
-            {Object.keys(weights).map((value) => {return <option value={value}>{value}</option>})}
-      </select>
+      <input type="text" value={inputText} onInput={whenTextFieldUpdate}/>
       <div className="text-out-box">
         <p>{"Small - " + plates.small}</p>
         <p>{"Medium - " + plates.medium}</p>
         <p>{"Large - " + plates.large}</p>
       </div>
-      
+      <h2>Realistic Value: {6 + plates.small * 1.1 + plates.medium * 2.2 + plates.large * 10.2}Kg</h2>
+      <PlateArangement plates={plates} />
     </main>
   )
 }
-
 
 
 
